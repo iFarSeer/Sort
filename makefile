@@ -1,14 +1,14 @@
-CC = g++
 objects = SelectSort.o BubbleSort.o SortBase.o main.o
 sort : $(objects)
-	CC -o sort $(objects)
+	g++ -o sort $(objects)
+
+
+SortBase.o : SortBase.h
+BubbleSort.o : BubbleSort.h
+SelectSort.o : SelectSort.h
 main.o : main.cpp
-	CC -c main.cpp
-SortBase.o : SortBase.cpp SortBase.h
-	CC -c SortBase.cpp
-BubbleSort.o : BubbleSort.cpp BubbleSort.h
-	CC -c BubbleSort.cpp
-SelectSort.o : SelectSort.cpp SelectSort.h
-	CC -c SelectSort.cpp
+
+#.PHONY : clean
 clean :
-	rm sort $(objects)
+	-rm $(objects)
+	-rm sort
